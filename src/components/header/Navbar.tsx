@@ -1,11 +1,14 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'About', href: '/about', current: false },
+  { name: 'Services', href: '/services', current: false },
+  { name: 'Study Destination', href: '/study-destination', current: false },
+  { name: 'Contact', href: '/contact', current: false },
+  { name: 'Blog', href: '/blog', current: false },
+  { name: 'Gallery', href: '/gallery', current: false },
 ]
 
 function classNames(...classes: String[]) {
@@ -14,27 +17,27 @@ function classNames(...classes: String[]) {
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+    <Disclosure as="nav">
+      <div className="mx-auto px-2 md:px-6 lg:px-8">
+        <div className="relative flex h-16 md:h-24 items-center justify-between">
+          <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="block h-6 w-6 group-data-[open]:hidden" />
               <XMarkIcon aria-hidden="true" className="hidden h-6 w-6 group-data-[open]:block" />
             </DisclosureButton>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex flex-1 items-center justify-center lg:items-center lg:justify-between">
             <div className="flex flex-shrink-0 items-center">
               <img
                 alt="Your Company"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
+                src="/images/logo.png"
+                className="h-10 w-auto md:h-20"
               />
             </div>
-            <div className="hidden sm:ml-6 sm:block">
+            <div className="hidden lg:ml-6 lg:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
                   <a
@@ -42,8 +45,8 @@ export default function Navbar() {
                     href={item.href}
                     aria-current={item.current ? 'page' : undefined}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-slate-800 hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
+                      item.current ? 'text-primary' : 'text-slate-800 hover:text-primary',
+                      'rounded-md px-2 py-2 text-base font-medium',
                     )}
                   >
                     {item.name}
@@ -52,7 +55,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -65,7 +68,7 @@ export default function Navbar() {
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <MenuButton className="relative flex rounded-full bg-primary text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
                   <img
@@ -78,6 +81,7 @@ export default function Navbar() {
               <MenuItems
                 transition
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                data-open="open"
               >
                 <MenuItem>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
@@ -100,8 +104,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden">
-        <div className="space-y-1 px-2 pb-3 pt-2">
+      <DisclosurePanel className="lg:hidden">
+        <div className="space-y-1 px-2 pb-3 pt-2 bg-purple-200">
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
@@ -109,7 +113,7 @@ export default function Navbar() {
               href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-slate-800 hover:bg-gray-700 hover:text-white',
+                item.current ? 'text-primary' : 'text-slate-800 hover:text-primary',
                 'block rounded-md px-3 py-2 text-base font-medium',
               )}
             >

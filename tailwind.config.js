@@ -6,7 +6,14 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,html}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#4D148C"
+      },
+      backgroundImage: {
+        'main-banner': "url(/images/Cover-Template.gif)"
+      }
+    },
   },
   plugins: [],
 }
