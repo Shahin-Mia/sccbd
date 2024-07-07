@@ -19,7 +19,17 @@ function Home({ }: Props) {
             </section>
             <section className="container mx-auto">
                 <div className='mt-10'>
-                    <h3 className='text-4xl font-semibold text-primary'>Our mission and vision</h3>
+                    <h3 className='text-4xl font-bold text-primary'>Our mission and vision</h3>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:mx-10 mt-5'>
+                    <Card
+                        title="Our mission"
+                        description="Our primary objective is to enable students from across the globe to access top-notch educational opportunities and services. Simultaneously, we aim to offer our partners and clients a transparent, dependable, and…"
+                    />
+                    <Card
+                        title="Our vision"
+                        description="As the foremost agency for recruiting international students in the Asia Pacific region, we are renowned for our dedication to a student-focused approach, unwavering integrity, and outstanding service delivery…"
+                    />
                 </div>
             </section>
         </main>
