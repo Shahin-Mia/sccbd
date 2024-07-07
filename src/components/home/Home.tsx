@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
 import Card from '../ui/Card';
+import Carousel from '../ui/Carousel';
 
 type Props = {}
 
@@ -30,6 +31,16 @@ function Home({ }: Props) {
                         title="Our vision"
                         description="As the foremost agency for recruiting international students in the Asia Pacific region, we are renowned for our dedication to a student-focused approach, unwavering integrity, and outstanding service delivery…"
                     />
+                </div>
+            </section>
+            <section>
+                <div className="container mx-auto">
+                    <div className='mt-10'>
+                        <h3 className='text-4xl font-bold text-primary text-center'>Our Destination</h3>
+                    </div>
+                    <div>
+                        <Carousel />
+                    </div>
                 </div>
             </section>
         </main>
