@@ -33,12 +33,12 @@ function Home({ }: Props) {
                     />
                 </div>
             </section>
-            <section>
+            <section className='bg-primary h-screen py-10 mt-10'>
                 <div className="container mx-auto">
-                    <div className='mt-10'>
-                        <h3 className='text-4xl font-bold text-primary text-center'>Our Destination</h3>
-                    </div>
                     <div>
+                        <h3 className='text-4xl font-bold text-white text-center'>Our Destination</h3>
+                    </div>
+                    <div className='mt-10'>
                         <Carousel />
                     </div>
                 </div>
