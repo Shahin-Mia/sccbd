@@ -2,7 +2,7 @@ type Props = {}
 
 const SliderCard = (props: Props) => {
     return (
-        <div className="max-w-96 bg-white rounded-lg shadow p-5 mx-2">
+        <div className="max-w-96 bg-white rounded-lg shadow p-3 mx-2">
             <div>
                 <img src="/images/Study-in-Australia-1.jpg" alt="" className="rounded-lg" />
             </div>
