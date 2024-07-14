@@ -1,5 +1,6 @@
 // import { useState } from 'react'
 import './App.css'
+import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
 import Navbar from './components/header/Navbar'
 import Home from './components/home/Home'
@@ -9,9 +10,10 @@ function App() {
 
   return (
     <>
-      <Header/>
-      <Navbar/>
-      <Home/>
+      <Header />
+      <Navbar />
+      <Home />
+      <Footer />
     </>
   )
 }

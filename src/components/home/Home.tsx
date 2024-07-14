@@ -4,10 +4,51 @@ import Card from '../ui/Card';
 import Carousel from '../ui/Carousel';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import MessageCarousel from '../ui/MessageCarousel';
+import ImageCarousel from '../ui/ImageCarousel';
 
 type Props = {}
 
 function Home({ }: Props) {
+
+    const partnerLogo: { name: String, src: String }[] = [
+        {
+            name: "australian-university",
+            src: "australian-international-institute-of-higher-education.png"
+        },
+        {
+            name: "capilano-university",
+            src: "capilano-university.png"
+        },
+        {
+            name: "Kingston University",
+            src: "Kingston-Logo.png"
+        },
+        {
+            name: "Lincoln Institute",
+            src: "lincoln-institute-of-higher-education.jpg"
+        },
+        {
+            name: "National Academy of Professional",
+            src: "national-academy-of-professional-studies-logo.png"
+        },
+    ];
+
+    const eventImages: { name: string, src: string }[] = [
+        {
+            name: "Event-one",
+            src: "1.png",
+        },
+        {
+            name: "Event-two",
+            src: "2.png",
+        },
+        {
+            name: "Event-three",
+            src: "3.png",
+        }
+    ]
+
     return (
         <main>
             <section className='bg-main-banner bg-cover bg-center h-screen'>
@@ -123,6 +164,73 @@ function Home({ }: Props) {
                             <h3 className='absolute -bottom-3 right-0 bg-primary text-white text-2xl px-4 py-1'>Study Destination</h3>
                         </div>
                     </div>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10'>
+                        <div className="max-w-96 bg-white p-3 mx-2">
+                            <div className='max-w-16'>
+                                <img src="/images/Academic-counselling.png" alt="" className="rounded-lg" />
+                            </div>
+                            <div>
+                                <h3 className="text-primary text-xl font-semibold mt-1 mb-3">Academic Counseling</h3>
+                                <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!</p>
+                            </div>
+                        </div>
+                        <div className="max-w-96 bg-white p-3 mx-2">
+                            <div className='max-w-16'>
+                                <img src="/images/Securing-admission.png" alt="" className="rounded-lg" />
+                            </div>
+                            <div>
+                                <h3 className="text-primary text-xl font-semibold mt-1 mb-3">
+                                    Securing Admission
+                                </h3>
+                                <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!</p>
+                            </div>
+                        </div>
+                        <div className="max-w-96 bg-white p-3 mx-2">
+                            <div className='max-w-16'>
+                                <img src="/images/Visa-guidance.png" alt="" className="rounded-lg" />
+                            </div>
+                            <div>
+                                <h3 className="text-primary text-xl font-semibold mt-1 mb-3">
+                                    Visa Guidance
+                                </h3>
+                                <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className='bg-primary'>
+                <div className='container mx-auto'>
+                    <MessageCarousel />
+                </div>
+            </section>
+
+            <section className='container mx-auto mt-10 text-center'>
+                <a href="#" className='bg-primary text-white text-2xl font-semibold rounded-xl px-4 py-1'>OUR TEAM</a>
+            </section>
+
+            <section className='container mx-auto mt-10'>
+                <div className='text-center'>
+                    <h2 className='text-4xl border-2 border-primary inline-block px-10 py-2 text-primary'>Our Partners</h2>
+                </div>
+                <div className='mt-10'>
+                    <ImageCarousel images={partnerLogo} classes="max-w-40" />
+                </div>
+            </section>
+
+            <section className="container mx-auto mt-10">
+                <div className="text-center">
+                    <h2 className="text-4xl border-b-2 border-primary inline-block px-10 py-2 text-primary">Our Upcoming Events</h2>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center mt-10'>
+                    {
+                        eventImages.map((image, index) => (
+                            <div key={index}>
+                                <img src={`/images/${image.src}`} alt={image.name} />
+                            </div>
+                        ))
+                    }
                 </div>
             </section>
         </main>
