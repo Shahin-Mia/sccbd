@@ -1,6 +1,6 @@
-type Props = {}
+// type Props = {}
 
-const MessageBanner = (props: Props) => {
+const MessageBanner = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-items-center p-16 text-white">
             <div>

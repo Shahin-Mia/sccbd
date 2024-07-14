@@ -1,6 +1,6 @@
-type Props = {}
+// type Props = {}
 
-const SliderCard = (props: Props) => {
+const SliderCard = () => {
     return (
         <div className="max-w-96 bg-white rounded-lg shadow p-3 mx-2">
             <div>

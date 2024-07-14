@@ -3,9 +3,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import MessageBanner from "./MessageBanner";
 
-type Props = {}
+// type Props = {}
 
-const MessageCarousel = (props: Props) => {
+const MessageCarousel = () => {
 
     const settings = {
         dots: true,

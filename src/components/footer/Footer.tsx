@@ -1,9 +1,9 @@
 import { faCheckCircle, faCopyright } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-type Props = {}
+// type Props = {}
 
-const Footer = (props: Props) => {
+const Footer = () => {
     const date = new Date();
 
     return (

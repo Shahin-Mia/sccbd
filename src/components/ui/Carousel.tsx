@@ -3,9 +3,9 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderCard from "./SliderCard";
 import Slider from "react-slick";
 
-type Props = {}
+// type Props = {}
 
-const Carousel = (props: Props) => {
+const Carousel = () => {
 
   const settings = {
     dots: true,
