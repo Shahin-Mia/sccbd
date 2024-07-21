@@ -1,6 +1,5 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SliderCard from "./SliderCard";
 import Slider from "react-slick";
 
 type Props = { images: { name: String, src: String }[], classes: string }

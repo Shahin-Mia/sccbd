@@ -1,21 +1,26 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link, useLocation } from 'react-router-dom';
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'About', href: '/about', current: false },
-  { name: 'Services', href: '/services', current: false },
-  { name: 'Study Destination', href: '/study-destination', current: false },
-  { name: 'Contact', href: '/contact', current: false },
-  { name: 'Blog', href: '/blog', current: false },
-  { name: 'Gallery', href: '/gallery', current: false },
-]
 
 function classNames(...classes: String[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Navbar() {
+  const location = useLocation();
+
+  console.log(location.pathname)
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Study Destination', href: '/study-destination' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Gallery', href: '/gallery' },
+  ]
+
   return (
     <Disclosure as="nav">
       <div className="mx-auto px-2 md:px-6 lg:px-8">
@@ -40,17 +45,16 @@ export default function Navbar() {
             <div className="hidden lg:ml-6 lg:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
+                    to={item.href}
                     className={classNames(
-                      item.current ? 'text-primary' : 'text-slate-800 hover:text-primary',
+                      location.pathname === item.href ? 'text-primary' : 'text-slate-800 hover:text-primary',
                       'rounded-md px-2 py-2 text-base font-medium',
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -111,9 +115,8 @@ export default function Navbar() {
               key={item.name}
               as="a"
               href={item.href}
-              aria-current={item.current ? 'page' : undefined}
               className={classNames(
-                item.current ? 'text-primary' : 'text-slate-800 hover:text-primary',
+                item.href === location.pathname ? 'text-primary' : 'text-slate-800 hover:text-primary',
                 'block rounded-md px-3 py-2 text-base font-medium',
               )}
             >

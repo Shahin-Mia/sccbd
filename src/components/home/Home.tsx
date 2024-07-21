@@ -53,17 +53,17 @@ function Home({ }: Props) {
         <main>
             <section className='bg-main-banner bg-cover bg-center h-screen'>
                 <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
-                    <div>
-                        <h2 className='text-primary text-6xl font-bold mb-10'>Explore overseas study options...</h2>
-                        <h3 className='text-xl font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-primary' /> Countless option to make your future brighter</h3>
-                        <p className='text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
-                        <a href='#' className='bg-primary text-white text-2xl px-3 py-2 rounded-md'>Apply Now</a>
+                    <div className='px-5 md:px-0'>
+                        <h2 className='text-primary text-4xl md:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
+                        <h3 className='text-lg md:text-xl font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-primary' /> Countless option to make your future brighter</h3>
+                        <p className='text-base md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
+                        <a href='#' className='bg-primary text-white text-lg md:text-2xl px-3 py-2 rounded-md'>Apply Now</a>
                     </div>
                 </div>
             </section>
-            <section className="container mx-auto">
+            <section className="container mx-auto px-5 md:px-0">
                 <div className='mt-10'>
-                    <h3 className='text-4xl font-bold text-primary'>Our mission and vision</h3>
+                    <h3 className='text-3xl md:text-4xl font-bold text-primary'>Our mission and vision</h3>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:mx-10 mt-5'>
                     <Card
@@ -79,7 +79,7 @@ function Home({ }: Props) {
             <section className='bg-primary h-screen py-10 mt-10'>
                 <div className="container mx-auto">
                     <div>
-                        <h3 className='text-4xl font-bold text-white text-center'>Our Destination</h3>
+                        <h3 className='text-3xl md:text-4xl font-bold text-white text-center'>Our Destination</h3>
                     </div>
                     <div className='mt-10'>
                         <Carousel />
@@ -87,12 +87,12 @@ function Home({ }: Props) {
                 </div>
             </section>
             <section>
-                <div className='container mx-auto mt-10'>
+                <div className='container mx-auto mt-10 px-5 md:px-0'>
                     <div>
-                        <h2 className='text-4xl font-bold mb-2'>Our Services</h2>
-                        <h3 className='text-2xl mb-2'>SCC provides quality counseling to our students</h3>
+                        <h2 className='text-3xl md:text-4xl font-bold mb-2'>Our Services</h2>
+                        <h3 className='text-xl md:text-2xl mb-2'>SCC provides quality counseling to our students</h3>
                     </div>
-                    <div className='flex items-center justify-between mx-14'>
+                    <div className='flex items-center justify-between mx-14 flex-wrap'>
                         <div>
                             <Disclosure as="div" className="px-6 mb-1">
                                 <DisclosureButton className="group flex w-full items-center">
@@ -207,26 +207,26 @@ function Home({ }: Props) {
             </section>
 
             <section className='container mx-auto mt-10 text-center'>
-                <a href="#" className='bg-primary text-white text-2xl font-semibold rounded-xl px-4 py-1'>OUR TEAM</a>
+                <a href="#" className='bg-primary text-white text-xl md:text-2xl font-semibold rounded-xl px-4 py-1'>OUR TEAM</a>
             </section>
 
             <section className='container mx-auto mt-10'>
                 <div className='text-center'>
-                    <h2 className='text-4xl border-2 border-primary inline-block px-10 py-2 text-primary'>Our Partners</h2>
+                    <h2 className='text-3xl md:text-4xl border-2 border-primary inline-block px-10 py-2 text-primary'>Our Partners</h2>
                 </div>
                 <div className='mt-10'>
                     <ImageCarousel images={partnerLogo} classes="max-w-40" />
                 </div>
             </section>
 
-            <section className="container mx-auto mt-10">
+            <section className="container mx-auto my-10">
                 <div className="text-center">
-                    <h2 className="text-4xl border-b-2 border-primary inline-block px-10 py-2 text-primary">Our Upcoming Events</h2>
+                    <h2 className="text-3xl md:text-4xl border-b-2 border-primary inline-block px-10 py-2 text-primary">Our Upcoming Events</h2>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center mt-10'>
                     {
                         eventImages.map((image, index) => (
-                            <div key={index}>
+                            <div key={index} className='mb-5'>
                                 <img src={`/images/${image.src}`} alt={image.name} />
                             </div>
                         ))
