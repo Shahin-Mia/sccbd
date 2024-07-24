@@ -6,31 +6,45 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import MessageCarousel from '../ui/MessageCarousel';
 import ImageCarousel from '../ui/ImageCarousel';
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
 function Home({ }: Props) {
 
-    const partnerLogo: { name: String, src: String }[] = [
+    const settings = {
+        speed: 2000,
+        autoplaySpeed: 2000,
+        cssEase: "linear",
+        dots: true,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        autoplay: true,
+        pauseOnHover: true,
+    }
+
+    const partnerLogo: { alt: string, src: string }[] = [
         {
-            name: "australian-university",
-            src: "australian-international-institute-of-higher-education.png"
+            src: "australian-international-institute-of-higher-education.png",
+            alt: "australian-university",
         },
         {
-            name: "capilano-university",
-            src: "capilano-university.png"
+            src: "capilano-university.png",
+            alt: "capilano-university",
         },
         {
-            name: "Kingston University",
-            src: "Kingston-Logo.png"
+            src: "Kingston-Logo.png",
+            alt: "Kingston University",
         },
         {
-            name: "Lincoln Institute",
-            src: "lincoln-institute-of-higher-education.jpg"
+            src: "lincoln-institute-of-higher-education.jpg",
+            alt: "Lincoln Institute",
         },
         {
-            name: "National Academy of Professional",
-            src: "national-academy-of-professional-studies-logo.png"
+            src: "national-academy-of-professional-studies-logo.png",
+            alt: "National Academy of Professional",
         },
     ];
 
@@ -57,7 +71,7 @@ function Home({ }: Props) {
                         <h2 className='text-primary text-4xl md:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
                         <h3 className='text-lg md:text-xl font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-primary' /> Countless option to make your future brighter</h3>
                         <p className='text-base md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
-                        <a href='#' className='bg-primary text-white text-lg md:text-2xl px-3 py-2 rounded-md'>Apply Now</a>
+                        <Link to='/application-page' className='bg-primary text-white text-lg md:text-2xl px-3 py-2 rounded-md'>Apply Now</Link>
                     </div>
                 </div>
             </section>
@@ -215,7 +229,7 @@ function Home({ }: Props) {
                     <h2 className='text-3xl md:text-4xl border-2 border-primary inline-block px-10 py-2 text-primary'>Our Partners</h2>
                 </div>
                 <div className='mt-10'>
-                    <ImageCarousel images={partnerLogo} classes="max-w-40" />
+                    <ImageCarousel images={partnerLogo} classes="max-w-40" setting={settings} />
                 </div>
             </section>
 

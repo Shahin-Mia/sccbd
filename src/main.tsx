@@ -13,6 +13,7 @@ import StudyDestination from './components/study-destination/StudyDestination.ts
 import Contact from './components/contact/Contact.tsx';
 import Blog from './components/blog/Blog.tsx';
 import Gallery from './components/gallery/Gallery.tsx';
+import ApplyPage from './components/apply-page/ApplyPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/gallery',
         element: <Gallery />
+      },
+      {
+        path: '/application-page',
+        element: <ApplyPage />
       }
     ]
   }

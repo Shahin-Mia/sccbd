@@ -2,8 +2,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SliderCard from "./SliderCard";
 import Slider from "react-slick";
+import { destinationCards } from "../../lib/data";
 
-// type Props = {}
 
 const Carousel = () => {
 
@@ -44,10 +44,16 @@ const Carousel = () => {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
+        {
+          destinationCards.map((card, index) => (
+            <SliderCard
+              title={card.title}
+              img={card.img}
+              desc={card.desc}
+              cardType={card.cardType}
+            />
+          ))
+        }
       </Slider>
     </div>
   );

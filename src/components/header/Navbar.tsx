@@ -1,3 +1,5 @@
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation } from 'react-router-dom';
@@ -17,7 +19,7 @@ export default function Navbar() {
     { name: 'Services', href: '/services' },
     { name: 'Study Destination', href: '/study-destination' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Blog', href: '/blog' },
+    // { name: 'Blog', href: '/blog' },
     { name: 'Gallery', href: '/gallery' },
   ]
 
@@ -36,11 +38,13 @@ export default function Navbar() {
           </div>
           <div className="flex flex-1 items-center justify-center lg:items-center lg:justify-between">
             <div className="flex flex-shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="/images/logo.png"
-                className="h-10 w-auto md:h-20"
-              />
+              <Link to='/'>
+                <img
+                  alt="Your Company"
+                  src="/images/logo.png"
+                  className="h-10 w-auto md:h-20"
+                />
+              </Link>
             </div>
             <div className="hidden lg:ml-6 lg:block">
               <div className="flex space-x-4">
@@ -59,7 +63,10 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
+          <div>
+            <Link to="/login" className='px-2 py-2 text-base font-medium text-slate-800'>Login <FontAwesomeIcon icon={faRightToBracket} /></Link>
+          </div>
+          {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
             <button
               type="button"
               className="relative rounded-full bg-primary p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -69,7 +76,6 @@ export default function Navbar() {
               <BellIcon aria-hidden="true" className="h-6 w-6" />
             </button>
 
-            {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative flex rounded-full bg-primary text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -104,7 +110,7 @@ export default function Navbar() {
                 </MenuItem>
               </MenuItems>
             </Menu>
-          </div>
+          </div> */}
         </div>
       </div>
 

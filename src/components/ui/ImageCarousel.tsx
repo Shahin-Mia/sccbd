@@ -2,20 +2,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-type Props = { images: { name: String, src: String }[], classes: string }
+type Props = { images: { alt: string, src: string }[], classes: string, setting: Object }
 
-const ImageCarousel = ({ images, classes }: Props) => {
+const ImageCarousel = ({ images, classes, setting }: Props) => {
 
     const settings = {
-        speed: 2000,
-        autoplaySpeed: 2000,
-        cssEase: "linear",
-        dots: true,
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        autoplay: true,
+        ...setting,
         responsive: [
             {
                 breakpoint: 1024,
@@ -50,8 +42,8 @@ const ImageCarousel = ({ images, classes }: Props) => {
             <Slider {...settings}>
                 {
                     images.map((image, index) => (
-                        <div key={index} className={classes}>
-                            <img src={`/images/${image.src}`} alt="" />
+                        <div key={index}>
+                            <img src={`/images/${image.src}`} alt="" className={classes} />
                         </div>
                     ))
                 }
