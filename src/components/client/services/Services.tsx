@@ -1,7 +1,7 @@
-import ContactForm from "../ui/ContactForm";
-import useDocumentTitle from "../../lib/Helpers"
-import SliderCard from "../ui/SliderCard";
-import { serviceCards } from "../../lib/data";
+import ContactForm from "../../ui/ContactForm";
+import useDocumentTitle from "../../../lib/Helpers"
+import SliderCard from "../../ui/SliderCard";
+import { serviceCards } from "../../../lib/data";
 
 
 const Services = () => {
@@ -16,7 +16,7 @@ const Services = () => {
             <div className="bg-slate-100 py-16 px-10 grid grid-cols1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10">
                 {
                     serviceCards.map((card, index) => (
-                        <SliderCard
+                        <SliderCard key={index}
                             title={card.title}
                             img={card.img}
                             desc={card.desc}

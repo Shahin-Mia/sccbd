@@ -1,9 +1,12 @@
-import SliderCard from "../ui/SliderCard";
+import useDocumentTitle from "../../../lib/Helpers";
+import SliderCard from "../../ui/SliderCard";
 
-type Props = {}
+// type Props = {}
 type DestinationCard = { title: string, img: string, desc: string, cardType: string };
 
-const StudyDestination = (props: Props) => {
+const StudyDestination = () => {
+    useDocumentTitle('Study Destination');
+
     const destinationCards: Array<DestinationCard> = [
         {
             title: "Study in Australia",
@@ -35,10 +38,10 @@ const StudyDestination = (props: Props) => {
             <div className="bg-primary text-center">
                 <h1 className="text-5xl font-bold text-white p-20">Study Destination</h1>
             </div>
-            <div className="bg-slate-100 py-16 px-10 grid grid-cols1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10">
+            <div className="bg-slate-100 py-16 px-10 grid grid-cols1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-x-5 gap-y-10">
                 {
                     destinationCards.map((card, index) => (
-                        <SliderCard
+                        <SliderCard key={index}
                             title={card.title}
                             img={card.img}
                             desc={card.desc}

@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
-import Card from '../ui/Card';
-import Carousel from '../ui/Carousel';
+import Card from '../../ui/Card';
+import Carousel from '../../ui/Carousel';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import MessageCarousel from '../ui/MessageCarousel';
-import ImageCarousel from '../ui/ImageCarousel';
+import MessageCarousel from '../../ui/MessageCarousel';
+import ImageCarousel from '../../ui/ImageCarousel';
 import { Link } from 'react-router-dom';
 
 type Props = {}
@@ -66,7 +66,7 @@ function Home({ }: Props) {
     return (
         <main>
             <section className='bg-main-banner bg-cover bg-center h-screen'>
-                <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
+                <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
                     <div className='px-5 md:px-0'>
                         <h2 className='text-primary text-4xl md:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
                         <h3 className='text-lg md:text-xl font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-primary' /> Countless option to make your future brighter</h3>
@@ -75,7 +75,7 @@ function Home({ }: Props) {
                     </div>
                 </div>
             </section>
-            <section className="container mx-auto px-5 md:px-0">
+            <section className="container overflow-hidden mx-auto px-5 md:px-0">
                 <div className='mt-10'>
                     <h3 className='text-3xl md:text-4xl font-bold text-primary'>Our mission and vision</h3>
                 </div>
@@ -91,7 +91,7 @@ function Home({ }: Props) {
                 </div>
             </section>
             <section className='bg-primary h-screen py-10 mt-10'>
-                <div className="container mx-auto">
+                <div className="container overflow-hidden mx-auto">
                     <div>
                         <h3 className='text-3xl md:text-4xl font-bold text-white text-center'>Our Destination</h3>
                     </div>
@@ -101,12 +101,12 @@ function Home({ }: Props) {
                 </div>
             </section>
             <section>
-                <div className='container mx-auto mt-10 px-5 md:px-0'>
+                <div className='container overflow-hidden mx-auto mt-10 px-5 md:px-0'>
                     <div>
                         <h2 className='text-3xl md:text-4xl font-bold mb-2'>Our Services</h2>
                         <h3 className='text-xl md:text-2xl mb-2'>SCC provides quality counseling to our students</h3>
                     </div>
-                    <div className='flex items-center justify-between mx-14 flex-wrap'>
+                    <div className='flex items-center justify-between sm:mx-14 flex-wrap'>
                         <div>
                             <Disclosure as="div" className="px-6 mb-1">
                                 <DisclosureButton className="group flex w-full items-center">
@@ -215,16 +215,17 @@ function Home({ }: Props) {
             </section>
 
             <section className='bg-primary'>
-                <div className='container mx-auto'>
+                <div className='container overflow-hidden mx-auto'>
                     <MessageCarousel />
                 </div>
             </section>
 
-            <section className='container mx-auto mt-10 text-center'>
-                <a href="#" className='bg-primary text-white text-xl md:text-2xl font-semibold rounded-xl px-4 py-1'>OUR TEAM</a>
+            <section className='container overflow-hidden mx-auto pt-10 text-center'>
+                <Link to="/our-team" className='btn btn-lg bg-primary text-white text-xl md:text-2xl font-semibold rounded-xl px-4 py-1 hover:bg-primary transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>OUR TEAM</Link>
             </section>
 
-            <section className='container mx-auto mt-10'>
+
+            <section className='container overflow-hidden mx-auto mt-10'>
                 <div className='text-center'>
                     <h2 className='text-3xl md:text-4xl border-2 border-primary inline-block px-10 py-2 text-primary'>Our Partners</h2>
                 </div>
@@ -233,7 +234,7 @@ function Home({ }: Props) {
                 </div>
             </section>
 
-            <section className="container mx-auto my-10">
+            <section className="container overflow-hidden mx-auto my-10">
                 <div className="text-center">
                     <h2 className="text-3xl md:text-4xl border-b-2 border-primary inline-block px-10 py-2 text-primary">Our Upcoming Events</h2>
                 </div>

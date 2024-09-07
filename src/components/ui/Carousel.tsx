@@ -46,7 +46,7 @@ const Carousel = () => {
       <Slider {...settings}>
         {
           destinationCards.map((card, index) => (
-            <SliderCard
+            <SliderCard key={index}
               title={card.title}
               img={card.img}
               desc={card.desc}

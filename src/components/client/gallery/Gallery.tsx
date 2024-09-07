@@ -1,12 +1,13 @@
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { eventImages, partnerImages } from "../../lib/data"
-import ImageCarousel from "../ui/ImageCarousel"
+import { eventImages, partnerImages } from "../../../lib/data"
+import ImageCarousel from "../../ui/ImageCarousel"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useDocumentTitle from "../../../lib/Helpers";
 
-type Props = {}
+// type Props = {}
 
 function NextArrow(props: any) {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return (
         <FontAwesomeIcon
             icon={faAngleRight}
@@ -18,7 +19,7 @@ function NextArrow(props: any) {
 }
 
 function PrevArrow(props: any) {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return (
         <FontAwesomeIcon
             icon={faAngleLeft}
@@ -29,7 +30,7 @@ function PrevArrow(props: any) {
     );
 }
 
-const Gallery = (props: Props) => {
+const Gallery = () => {
 
     const settings = {
         speed: 2000,
@@ -43,6 +44,8 @@ const Gallery = (props: Props) => {
         prevArrow: <PrevArrow />
     }
 
+    useDocumentTitle('Gallery');
+
     return (
         <div>
             <div className="text-center">
@@ -50,17 +53,17 @@ const Gallery = (props: Props) => {
             </div>
             <div>
                 <div className="mb-16">
-                    <h2 className="text-center text-4xl font-semibold underline mb-5">Our Events</h2>
-                    <div className="container mx-auto">
-                        <ImageCarousel images={eventImages} classes="object-cover w-96 h-60 px-2" setting={settings} />
+                    <h2 className="text-center text-3xl md:text-4xl font-semibold underline mb-5">Our Events</h2>
+                    <div className="w-4/5 md:container mx-auto">
+                        <ImageCarousel images={eventImages} classes="object-cover w-96 h-32 md:h-60 px-2" setting={settings} />
                     </div>
                 </div>
             </div>
             <div>
                 <div className="mb-16">
-                    <h2 className="text-center text-4xl font-semibold underline mb-5">Our Partners</h2>
-                    <div className="container mx-auto">
-                        <ImageCarousel images={partnerImages} classes="object-cover w-96 h-60 px-2" setting={settings} />
+                    <h2 className="text-center text-3xl md:text-4xl font-semibold underline mb-5">Our Partners</h2>
+                    <div className="w-4/5 md:container mx-auto">
+                        <ImageCarousel images={partnerImages} classes="object-cover w-96 h-32 md:h-60 px-2" setting={settings} />
                     </div>
                 </div>
             </div>

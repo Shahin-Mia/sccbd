@@ -1,9 +1,11 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react"
-import ContactForm from "../ui/ContactForm"
+import ContactForm from "../../ui/ContactForm"
+import useDocumentTitle from "../../../lib/Helpers";
 
-type Props = {}
+// type Props = {}
 
-const Contact = (props: Props) => {
+const Contact = () => {
+    useDocumentTitle('Contact');
     return (
         <div>
             <div className="bg-primary text-center">
