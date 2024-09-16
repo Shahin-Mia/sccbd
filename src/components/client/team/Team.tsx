@@ -1,4 +1,6 @@
-function Team() {
+import React from "react"
+
+function Team(): React.JSX.Element {
     return (
         <div className="container mx-auto">
             <div className="mt-20 mb-10">

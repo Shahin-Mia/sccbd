@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
 import Card from '../../ui/Card';
 import Carousel from '../../ui/Carousel';
@@ -10,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 type Props = {}
 
-function Home({ }: Props) {
+function Home({ }: Props): React.JSX.Element {
 
     const settings = {
         speed: 2000,
@@ -106,7 +107,7 @@ function Home({ }: Props) {
                         <h2 className='text-3xl md:text-4xl font-bold mb-2'>Our Services</h2>
                         <h3 className='text-xl md:text-2xl mb-2'>SCC provides quality counseling to our students</h3>
                     </div>
-                    <div className='flex items-center justify-between sm:mx-14 flex-wrap'>
+                    <div className='flex items-center justify-between sm:mx-14 flex-wrap sm:flex-nowrap'>
                         <div>
                             <Disclosure as="div" className="px-6 mb-1">
                                 <DisclosureButton className="group flex w-full items-center">

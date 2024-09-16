@@ -55,7 +55,7 @@ const Gallery = () => {
                 <div className="mb-16">
                     <h2 className="text-center text-3xl md:text-4xl font-semibold underline mb-5">Our Events</h2>
                     <div className="w-4/5 md:container mx-auto">
-                        <ImageCarousel images={eventImages} classes="object-cover w-96 h-32 md:h-60 px-2" setting={settings} />
+                        <ImageCarousel images={eventImages} classes="w-96 h-32 md:h-60 px-2" setting={settings} />
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ const Gallery = () => {
                 <div className="mb-16">
                     <h2 className="text-center text-3xl md:text-4xl font-semibold underline mb-5">Our Partners</h2>
                     <div className="w-4/5 md:container mx-auto">
-                        <ImageCarousel images={partnerImages} classes="object-cover w-96 h-32 md:h-60 px-2" setting={settings} />
+                        <ImageCarousel images={partnerImages} classes="w-96 h-32 md:h-60 px-2" setting={settings} />
                     </div>
                 </div>
             </div>
