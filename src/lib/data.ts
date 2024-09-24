@@ -109,6 +109,12 @@ export const destinationCards: Array<DestinationCard> = [
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
         cardType: "destination"
     },
+    {
+        title: "Study in Europe",
+        img: 'Study-in-Europe-1.jpg',
+        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
+        cardType: "destination"
+    },
 ];
 
 export const partnerImages: Array<Image> = [
@@ -176,4 +182,54 @@ export const partnerImages: Array<Image> = [
         src: "partner-16.jpeg",
         alt: "partner-16"
     },
+]
+
+export const members = [
+    {
+        name: "Kanij Fatima Mitu",
+        position: "Chief Executive officer",
+        image: "/kanij_fatima_mitu.png",
+        email: "ceo@sccbd.net",
+        contractNo: "+8801703523861",
+        employeeID: "2023001",
+    },
+    {
+        name: "Md.Deen Islam",
+        position: "Student Counsellor",
+        image: "/deen_islam.jpg",
+        email: "eenislam@sccbd.net",
+        contractNo: "+8801581498244",
+        employeeID: "2023011",
+    },
+    {
+        name: "Somaia Hasan Ruley",
+        position: "Student Counsellor",
+        image: "/somaia_hasan_ruley.jpg",
+        email: "somaia@sccbd.net",
+        contractNo: "+8801703560389",
+        employeeID: "202307",
+        BloodGroup: "B+"
+    },
+    {
+        name: "Md. Razib Hossain",
+        position: "Senior Student Counsellor",
+        image: "/razib_hossain.jpg",
+        email: "razib@sccbd.net",
+        contractNo: "+880 1703-514789",
+        employeeID: "2023012",
+    },
+    {
+        name: "Zobayer Islam",
+        position: "Senior Student Counsellor",
+        image: "/zobayer_islam.jpg",
+        email: "zobayerislam@sccbd.net",
+        contractNo: "+8801703539964",
+        employeeID: "2023013",
+    },
+    {
+        name: "Md. Rashidul Islam",
+        position: "English Language Instructor",
+        image: "/rashidul_islam.jpg",
+        email: "instructor.rashidul.slc@sccbd.net",
+    }
 ]

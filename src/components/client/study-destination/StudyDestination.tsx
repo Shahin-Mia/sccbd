@@ -32,23 +32,31 @@ const StudyDestination = () => {
             desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
             cardType: "destination"
         },
+        {
+            title: "Study in Europe",
+            img: 'Study-in-Europe-1.jpg',
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
+            cardType: "destination"
+        }
     ]
     return (
         <div>
             <div className="bg-primary text-center">
                 <h1 className="text-5xl font-bold text-white p-20">Study Destination</h1>
             </div>
-            <div className="bg-slate-100 py-16 px-10 grid grid-cols1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-x-5 gap-y-10">
-                {
-                    destinationCards.map((card, index) => (
-                        <SliderCard key={index}
-                            title={card.title}
-                            img={card.img}
-                            desc={card.desc}
-                            cardType={card.cardType}
-                        />
-                    ))
-                }
+            <div className="bg-slate-100 py-16 px-10">
+                <div className="container mx-auto  grid grid-cols1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-x-5 gap-y-10">
+                    {
+                        destinationCards.map((card, index) => (
+                            <SliderCard key={index}
+                                title={card.title}
+                                img={card.img}
+                                desc={card.desc}
+                                cardType={card.cardType}
+                            />
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )

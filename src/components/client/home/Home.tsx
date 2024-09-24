@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../ui/Card';
 import Carousel from '../../ui/Carousel';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
@@ -8,8 +8,34 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import MessageCarousel from '../../ui/MessageCarousel';
 import ImageCarousel from '../../ui/ImageCarousel';
 import { Link } from 'react-router-dom';
+import HelpForm from '../../ui/HelpForm';
+import Slider from 'react-slick';
 
 type Props = {}
+
+function NextArrow(props: any) {
+    const { className, onClick } = props;
+    return (
+        <FontAwesomeIcon
+            icon={faAngleRight}
+            onClick={onClick}
+            className={className}
+            style={{ color: "#fff", right: "0px", zIndex: 10, background: "#0a0a0a", padding: "5px", }}
+        />
+    );
+}
+
+function PrevArrow(props: any) {
+    const { className, onClick } = props;
+    return (
+        <FontAwesomeIcon
+            icon={faAngleLeft}
+            onClick={onClick}
+            className={className}
+            style={{ color: "#fff", left: "0px", zIndex: 10, background: "#0a0a0a", padding: "5px" }}
+        />
+    );
+}
 
 function Home({ }: Props): React.JSX.Element {
 
@@ -36,8 +62,8 @@ function Home({ }: Props): React.JSX.Element {
             alt: "capilano-university",
         },
         {
-            src: "Kingston-Logo.png",
-            alt: "Kingston University",
+            src: "SAHE_LOGO-MAIN.svg",
+            alt: "Southern Academy of Higher Education",
         },
         {
             src: "lincoln-institute-of-higher-education.jpg",
@@ -47,6 +73,10 @@ function Home({ }: Props): React.JSX.Element {
             src: "national-academy-of-professional-studies-logo.png",
             alt: "National Academy of Professional",
         },
+        {
+            src: "TIIS-Logo.png",
+            alt: "The International Institute of Students",
+        }
     ];
 
     const eventImages: { name: string, src: string }[] = [
@@ -64,34 +94,80 @@ function Home({ }: Props): React.JSX.Element {
         }
     ]
 
+    const baseUrl = "/images"
+    const fadeSettings = {
+        // dots: true,
+        fade: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        waitForAnimate: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: "linear",
+        adaptiveHeight: true,
+        nextArrow: <NextArrow />,  // Use custom next arrow
+        prevArrow: <PrevArrow />,
+    };
+
     return (
         <main>
-            <section className='bg-main-banner bg-cover bg-center h-screen'>
-                <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
-                    <div className='px-5 md:px-0'>
-                        <h2 className='text-primary text-4xl md:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
-                        <h3 className='text-lg md:text-xl font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-primary' /> Countless option to make your future brighter</h3>
-                        <p className='text-base md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
-                        <Link to='/application-page' className='bg-primary text-white text-lg md:text-2xl px-3 py-2 rounded-md'>Apply Now</Link>
+            <div className="slider-container">
+                <Slider {...fadeSettings}>
+                    <div className='relative'>
+                        <img src={baseUrl + "/slider-1.webp"} className='w-full h-[70vh] lg:h-auto' />
+                        <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
+                            <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
+                                <div className='px-5 md:px-0'>
+                                    <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
+                                    <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
+                                    <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
+                                    <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='relative'>
+                        <img src={baseUrl + "/slider-2.webp"} className='w-full h-[70vh] lg:h-auto' />
+                        <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
+                            <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
+                                <div className='px-5 md:px-0'>
+                                    <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
+                                    <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
+                                    <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
+                                    <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='relative'>
+                        <img src={baseUrl + "/slider-3.webp"} className='w-full h-[70vh] lg:h-auto' />
+                        <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
+                            <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
+                                <div className='px-5 md:px-0'>
+                                    <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
+                                    <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
+                                    <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
+                                    <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Slider>
+            </div>
+            <section className="container mx-auto overflow-hidden mt-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center lg:ml-16">
+                    <div>
+                        <h3 className='my-5 font-bold'>SCC can help you</h3>
+                        <HelpForm />
+                    </div>
+                    <div className='hidden lg:block'>
+                        <img src="/images/help-banner.jpg" className='w-4/5 h-full' alt="australia-picture" />
                     </div>
                 </div>
             </section>
-            <section className="container overflow-hidden mx-auto px-5 md:px-0">
-                <div className='mt-10'>
-                    <h3 className='text-3xl md:text-4xl font-bold text-primary'>Our mission and vision</h3>
-                </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:mx-10 mt-5'>
-                    <Card
-                        title="Our mission"
-                        description="Our primary objective is to enable students from across the globe to access top-notch educational opportunities and services. Simultaneously, we aim to offer our partners and clients a transparent, dependable, and…"
-                    />
-                    <Card
-                        title="Our vision"
-                        description="As the foremost agency for recruiting international students in the Asia Pacific region, we are renowned for our dedication to a student-focused approach, unwavering integrity, and outstanding service delivery…"
-                    />
-                </div>
-            </section>
-            <section className='bg-primary h-screen py-10 mt-10'>
+            <section className='bg-primary h-full py-10 mt-10'>
                 <div className="container overflow-hidden mx-auto">
                     <div>
                         <h3 className='text-3xl md:text-4xl font-bold text-white text-center'>Our Destination</h3>
@@ -179,7 +255,7 @@ function Home({ }: Props): React.JSX.Element {
                             <h3 className='absolute -bottom-3 right-0 bg-primary text-white text-2xl px-4 py-1'>Study Destination</h3>
                         </div>
                     </div>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 justify-items-center'>
                         <div className="max-w-96 bg-white p-3 mx-2">
                             <div className='max-w-16'>
                                 <img src="/images/Academic-counselling.png" alt="" className="rounded-lg" />
@@ -202,7 +278,7 @@ function Home({ }: Props): React.JSX.Element {
                         </div>
                         <div className="max-w-96 bg-white p-3 mx-2">
                             <div className='max-w-16'>
-                                <img src="/images/Visa-guidance.png" alt="" className="rounded-lg" />
+                                <img src="/images/Visa-guidance.png" alt="visa-guidance" className="rounded-lg" />
                             </div>
                             <div>
                                 <h3 className="text-primary text-xl font-semibold mt-1 mb-3">
@@ -235,7 +311,7 @@ function Home({ }: Props): React.JSX.Element {
                 </div>
             </section>
 
-            <section className="container overflow-hidden mx-auto my-10">
+            <section className="container overflow-hidden mx-auto mt-10">
                 <div className="text-center">
                     <h2 className="text-3xl md:text-4xl border-b-2 border-primary inline-block px-10 py-2 text-primary">Our Upcoming Events</h2>
                 </div>
@@ -247,6 +323,21 @@ function Home({ }: Props): React.JSX.Element {
                             </div>
                         ))
                     }
+                </div>
+            </section>
+            <section className="container overflow-hidden mx-auto px-5 md:px-0 mb-10">
+                <div className='mt-10'>
+                    <h3 className='text-3xl md:text-4xl font-bold text-primary'>Our mission and vision</h3>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:mx-10 mt-5'>
+                    <Card
+                        title="Our mission"
+                        description="Our primary objective is to enable students from across the globe to access top-notch educational opportunities and services. Simultaneously, we aim to offer our partners and clients a transparent, dependable, and…"
+                    />
+                    <Card
+                        title="Our vision"
+                        description="As the foremost agency for recruiting international students in the Asia Pacific region, we are renowned for our dedication to a student-focused approach, unwavering integrity, and outstanding service delivery…"
+                    />
                 </div>
             </section>
         </main>

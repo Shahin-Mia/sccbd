@@ -1,15 +1,15 @@
+import clsx from 'clsx';
+
 type Props = { title: string, img: string, desc: string, cardType: string };
 
 const SliderCard = ({ title, img, desc, cardType }: Props) => {
     return (
-        <div className="max-w-96 bg-white rounded-lg shadow px-3 pt-3 pb-6 mx-2">
+        <div className=" bg-white rounded-lg shadow px-3 pt-3 pb-6 mx-2">
             <div>
-                <img src={`/images/${img}`} alt="" className="rounded-lg" />
+                <img src={`/images/${img}`} alt="" className="rounded-lg object-cover w-full h-60" />
             </div>
             <div>
-                <h3 className={cardType === "service"
-                    ? "text-2xl font-bold mt-1 mb-3"
-                    : "text-primary text-2xl font-bold mt-1 mb-3"}>
+                <h3 className={clsx(cardType === "destination" && "text-primary", "text-2xl", "font-bold", "mt-1", "mb-3")}>
                     {title}
                 </h3>
                 <p className="text-sm">

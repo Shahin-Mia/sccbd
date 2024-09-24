@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-function ServiceCreate({ }: Props) {
+function ServiceCreate({ }: Props): React.JSX.Element {
     return (
         <div>ServiceCreate</div>
     )

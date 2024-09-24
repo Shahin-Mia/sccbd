@@ -8,6 +8,38 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fff;
+}
+
+input {
+  background-color: #fff;
+}
+
+input[type="radio"] {
+  appearance: none;
+  /* Remove native styling */
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  /* Custom border */
+  border-radius: 50%;
+  /* Make it a circle */
+  background-color: white;
+  /* Set background to white */
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Custom checked state */
+input[type="radio"]:checked {
+  @apply bg-primary;
+  /* Background when checked */
+  border-color: #ccc;
+  /* Border color when checked */
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -109,4 +141,27 @@ h5 {
 
 h6 {
   @apply text-sm;
+}
+
+p {
+  @apply text-justify;
+}
+
+.slick-next,
+.slick-prev {
+  opacity: 0;
+  transition: opacity 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slider-container:hover .slick-next,
+.slider-container:hover .slick-prev {
+  opacity: 1;
+}
+
+@media screen and (max-width: 640px) {
+
+  .slick-next,
+  .slick-prev {
+    visibility: hidden;
+  }
 }

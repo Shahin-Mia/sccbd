@@ -1,8 +1,6 @@
 import { faCheckCircle, faCopyright } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-// type Props = {}
-
 const Footer = () => {
     const date = new Date();
 
@@ -38,7 +36,7 @@ const Footer = () => {
                                 <li className="mb-5"><a href="#">Admission Service</a></li>
                                 <li className="mb-5"><a href="#">Visa application service</a></li>
                                 <li className="mb-5"><a href="#">Pre-deperture guides</a></li>
-                                <li className="mb-5"><a href="#"><FontAwesomeIcon icon={faCheckCircle} /> info@studentcareerconsultancy.com</a></li>
+                                <li className="mb-5"><a href="#"><FontAwesomeIcon icon={faCheckCircle} /> admission@sccbd.net</a></li>
                             </ul>
                         </div>
                     </div>
