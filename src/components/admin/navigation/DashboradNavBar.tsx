@@ -1,17 +1,21 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
+import { UserContext } from "../../context/UserProvider"
+import { sideNav } from "../../../lib/data"
 
 function DashboradNavBar(): React.JSX.Element {
+    const userContext = useContext(UserContext);
+    const { user, logout } = userContext;
     return (
         <div className="sticky top-0 z-10">
             <div className="drawer">
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     {/* Navbar */}
-                    <div className="navbar bg-base-200 w-full">
+                    <div className="navbar bg-slate-200 w-full">
                         <div className="flex-none lg:hidden">
                             <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                 <FontAwesomeIcon icon={faBars} className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
@@ -28,10 +32,10 @@ function DashboradNavBar(): React.JSX.Element {
                                     <MenuButton className="relative flex items-center rounded-full text-sm">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <span className="mx-1">User name</span>
+                                        <span className="mx-1">{user?.username}</span>
                                         <img
                                             alt=""
-                                            src="/images/CEO-Picture-1.jpg"
+                                            src={`/images/${user?.profile_image}`}
                                             className="h-8 w-8 rounded-full"
                                         />
                                     </MenuButton>
@@ -52,7 +56,7 @@ function DashboradNavBar(): React.JSX.Element {
                                         </a>
                                     </MenuItem>
                                     <MenuItem>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                        <a onClick={logout} href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                                             Sign out
                                         </a>
                                     </MenuItem>
@@ -64,16 +68,26 @@ function DashboradNavBar(): React.JSX.Element {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 min-h-full w-64 p-4">
-                        {/* Sidebar content here */}
-                        <li>
-                            <details>
-                                <summary>Parent</summary>
-                                <ul>
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </details>
-                        </li>
+                        {
+                            sideNav.map((nav) => {
+                                if (nav.hasOwnProperty("main") && nav.hasOwnProperty("sub")) {
+                                    return <li key={nav.id}>
+                                        <details>
+                                            <summary>{nav.main}</summary>
+                                            <ul>
+                                                {
+                                                    nav.sub?.map((child) => (
+                                                        <li key={child.id}><Link to={`/dashboard/${child.href}`}>{child.name}</Link></li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </details>
+                                    </li>
+                                } else {
+                                    return <li key={nav.id}><Link to={`/dashboard/${nav.href}`}>{nav.name}</Link></li>
+                                }
+                            })
+                        }
                     </ul>
                 </div>
             </div>

@@ -8,13 +8,22 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #fff;
+html {
+  @apply bg-stone-50 !important;
 }
 
-input {
-  background-color: #fff;
+body {
+  @apply text-stone-900 !important;
+  @apply bg-stone-50 !important;
 }
+
+.input,
+input,
+textarea,
+select {
+  @apply bg-slate-50 !important;
+}
+
 
 input[type="radio"] {
   appearance: none;
@@ -52,7 +61,7 @@ textarea:focus {
 }
 
 .RichEditor-root {
-  background: #fff;
+  background: #fffcfc;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-family: 'Georgia', serif;

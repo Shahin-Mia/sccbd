@@ -9,10 +9,8 @@ import Contact from "../client/contact/Contact";
 import Blog from "../client/blog/Blog";
 import Gallery from "../client/gallery/Gallery";
 import ApplyPage from "../client/apply-page/ApplyPage";
-import Login from "../client/login/Login";
 import HomeLayout from "../client/layout/HomeLayout";
 import Team from "../client/team/Team";
-import DashboardLayout from "../admin/layout/DashboardLayout";
 import DestinationForm from "../admin/destination/DestinationForm";
 import DestinationList from "../admin/destination/DestinationList";
 import UserList from "../admin/users/UserList";
@@ -29,6 +27,13 @@ import Partners from "../admin/partner/Partners";
 import AddPartners from "../admin/partner/AddPartners";
 import CarouselManager from "../admin/carousel/CarouselManager";
 import GalleryManager from "../admin/gallery/GalleryManager";
+import ProtectedRoute from "./ProtectedRoute";
+import ProtectedLogin from "../client/login/ProtectedLogin";
+import ProtectedGreeting from "../client/greetingPage/ProtectedGreeting";
+import ActivationPage from "../client/activation/ActivationPage";
+import ProtectedRegister from "../client/register/ProtectedRegister";
+import ProtectedResetForm from "../client/resetform/ProtectedResetForm";
+import EmailForm from "../client/forgot/EmailForm";
 
 export const router = createBrowserRouter([
     {
@@ -69,17 +74,37 @@ export const router = createBrowserRouter([
             },
             {
                 path: "login",
-                element: <Login />
+                element: <ProtectedLogin />
+            },
+            {
+                path: "register",
+                element: <ProtectedRegister />
+            },
+            {
+                path: "greeting",
+                element: <ProtectedGreeting />
             },
             {
                 path: "our-team",
                 element: <Team />
+            },
+            {
+                path: "account-activation",
+                element: <ActivationPage />
+            },
+            {
+                path: "forgot-password",
+                element: <EmailForm />
+            },
+            {
+                path: "reset-password",
+                element: <ProtectedResetForm />
             }
         ],
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <ProtectedRoute />,
         children: [
             {
                 path: "destination/add",

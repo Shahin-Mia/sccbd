@@ -233,3 +233,72 @@ export const members = [
         email: "instructor.rashidul.slc@sccbd.net",
     }
 ]
+
+export const sideNav = [
+    {
+        id: 1,
+        main: "User",
+        sub: [
+            { id: 11, name: "List", href: "user/list" },
+            { id: 12, name: "Add", href: "user/add" }
+        ]
+    },
+    {
+        id: 2,
+        main: "Destination",
+        sub: [
+            { id: 21, name: "List", href: "destination/list" },
+            { id: 22, name: "Add", href: "destination/add" }
+        ]
+    },
+    {
+        id: 3,
+        main: "Team member",
+        sub: [
+            { id: 31, name: "List", href: "member/list" },
+            { id: 32, name: "Add", href: "member/add" }
+        ]
+    },
+    {
+        id: 4,
+        main: "Service",
+        sub: [
+            { id: 41, name: "List", href: "service/list" },
+            { id: 42, name: "Add", href: "service/add" }
+        ]
+    },
+    {
+        id: 5,
+        main: "Messeges From People",
+        sub: [
+            { id: 51, name: "List", href: "message/list" },
+            { id: 52, name: "Add", href: "message/add" }
+        ]
+    },
+    {
+        id: 6,
+        main: "Events",
+        sub: [
+            { id: 61, name: "List", href: "event/list" },
+            { id: 62, name: "Add", href: "event/add" }
+        ]
+    },
+    {
+        id: 7,
+        main: "Partners",
+        sub: [
+            { id: 71, name: "List", href: "partner/list" },
+            { id: 72, name: "Add", href: "partner/add" }
+        ]
+    },
+    {
+        id: 8,
+        name: "Carousel",
+        href: "carousel"
+    },
+    {
+        id: 9,
+        name: "Gallery",
+        href: "gallery"
+    },
+];

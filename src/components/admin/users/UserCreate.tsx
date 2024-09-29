@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage, FieldProps } from 'formik';
 import * as Yup from 'yup';
+import { User } from '../../../../http/users';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 
 function UserCreate(): React.JSX.Element {
-
+    const [message, setMessage] = useState("");
     const [show, setShow] = useState<{ password: boolean, confirm: boolean }>({ password: false, confirm: false });
 
-    const SUPPORTED_FORMATS = ['image/jpeg', 'image/png', 'image/jpg'];
+    const SUPPORTED_FORMATS = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
 
     const validationSchema = Yup.object().shape({
         user_name: Yup.string().required('Name is required'),
@@ -45,10 +48,25 @@ function UserCreate(): React.JSX.Element {
             .required('Confirm Password is required'),
     });
 
-    const handleSubmit = (values: any, { setSubmitting }: any) => {
-        setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            console.log(values)
+    const createUser = async (data: any) => {
+        const formData = new FormData();
+        formData.append("username", data.user_name);
+        formData.append("email", data.email);
+        formData.append("role", data.role);
+        formData.append("profile_image", data.profile_image);
+        formData.append("password", data.password);
+
+        const msg = await User.createUser(formData);
+        return msg;
+    }
+
+    const handleSubmit = (values: any, { setSubmitting, resetForm }: any) => {
+        setTimeout(async () => {
+            const msg = await createUser(values);
+            if (msg) {
+                setMessage(msg);
+                resetForm();
+            };
             setSubmitting(false);
         }, 400);
     }
@@ -93,7 +111,7 @@ function UserCreate(): React.JSX.Element {
                                 <label htmlFor="role" className='font-semibold'>Role</label>
                                 <div className='form-control'>
                                     <Field as="select" id="role" name="role" className="select select-bordered focus:outline-none focus:border-primary">
-                                        <option value="" selected>Select role</option>
+                                        <option value="">Select role</option>
                                         <option value="admin">Admin</option>
                                         <option value="maintainer">Maintainer</option>
                                         <option value="viewer">Viewer</option>
@@ -132,25 +150,25 @@ function UserCreate(): React.JSX.Element {
                             <div className='grid grid-cols-1 md:grid-cols-2 mb-2'>
                                 <label htmlFor="password" className='font-semibold'>Create password</label>
                                 <div className='form-control'>
-                                    <label className="input input-bordered flex items-center focus-within:outline-none focus-within:border-primary">
-                                        <Field type={show.password ? "text" : "password"} name="password" className="grow" />
-                                        <span className="badge badge-neutral cursor-pointer" onClick={() => setShow({ ...show, password: !show.password })}>{show.password ? "Hide" : "Show"}</span>
-                                    </label>
+                                    <div className="input input-bordered flex items-center focus-within:outline-none focus-within:border-primary">
+                                        <Field type={show.password ? "text" : "password"} name="password" id="password" className="grow" />
+                                        <span className="cursor-pointer" onClick={() => setShow({ ...show, password: !show.password })}>{show.password ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}</span>
+                                    </div>
                                     <ErrorMessage name="password" className='text-xs' />
                                 </div>
                             </div>
                             <div className='grid grid-cols-1 md:grid-cols-2 mb-2'>
                                 <label htmlFor="confirm_password" className='font-semibold'>Confirm password</label>
                                 <div className='form-control'>
-                                    <label className="input input-bordered flex items-center focus-within:outline-none focus-within:border-primary">
-                                        <Field type={show.confirm ? "text" : "password"} name="confirm_password" className="grow" />
+                                    <div className="input input-bordered flex items-center focus-within:outline-none focus-within:border-primary">
+                                        <Field type={show.confirm ? "text" : "password"} name="confirm_password" id="confirm_password" className="grow" />
                                         <span
-                                            className="badge badge-neutral cursor-pointer"
+                                            className="cursor-pointer"
                                             onClick={() => setShow({ ...show, confirm: !show.confirm })}
                                         >
-                                            {show.confirm ? "Hide" : "Show"}
+                                            {show.confirm ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
                                         </span>
-                                    </label>
+                                    </div>
                                     <ErrorMessage name="confirm_password" className='text-xs' />
                                 </div>
                             </div>
