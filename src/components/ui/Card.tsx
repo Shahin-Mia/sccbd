@@ -1,11 +1,12 @@
 type Props = {
   title: String,
-  description: String
+  description: String,
+  aos_style: String,
 }
 
-function Card({ title, description }: Props) {
+function Card({ title, description, aos_style }: Props) {
   return (
-    <div>
+    <div data-aos={aos_style}>
       <div className="border-l-primary border-l-4 border-solid py-1 px-3">
         <h4 className="text-2xl md:text-3xl">{title}</h4>
       </div>

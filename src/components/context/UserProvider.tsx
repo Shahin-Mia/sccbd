@@ -3,6 +3,7 @@ import { User } from '../../../http/users';
 import { decryptData, encryptData } from '../../lib/cryptoUtils';
 
 interface User {
+    id: number
     username: string;
     profile_image: string;
     email: string;
@@ -36,7 +37,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
         if (data) {
             const user = decryptData(data);
             setUser(user);
-            console.log(user)
         }
     }, [])
 
@@ -47,9 +47,11 @@ const UserProvider = ({ children }: UserProviderProps) => {
             return data.message;
         }
 
-        setUser(data.user);
-        sessionStorage.setItem("encrypted_data", encryptData(data.user));
-        window.location.href = "/dashboard";
+        if (data.hasOwnProperty("status") && data.status === "success") {
+            setUser(data.user);
+            sessionStorage.setItem("encrypted_data", encryptData(data.user));
+            window.location.href = "/dashboard";
+        }
     };
 
     const logout = () => {

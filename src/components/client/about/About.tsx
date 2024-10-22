@@ -1,9 +1,6 @@
-// type Props = {}
 
-import useDocumentTitle from "../../../lib/Helpers";
 
 const About = () => {
-    useDocumentTitle('About');
 
     return (
         <div>

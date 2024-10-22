@@ -1,64 +1,45 @@
-import useDocumentTitle from "../../../lib/Helpers";
 import SliderCard from "../../ui/SliderCard";
+import { Destination } from "../../../../http/destinaitons";
+import { Outlet, useLoaderData, useOutlet } from "react-router-dom";
 
 // type Props = {}
-type DestinationCard = { title: string, img: string, desc: string, cardType: string };
+interface Destination {
+    id: number,
+    destination_name: String,
+    destination_thumbnail: String,
+    destination_images: String,
+    description: String,
+    published: number,
+    created_by: number,
+    created_at: String,
+    updated_at: String
+}
 
 const StudyDestination = () => {
-    useDocumentTitle('Study Destination');
-
-    const destinationCards: Array<DestinationCard> = [
-        {
-            title: "Study in Australia",
-            img: 'Study-in-Australia-1.jpg',
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
-            cardType: "destination"
-        },
-        {
-            title: "Study in Canada",
-            img: 'Study-in-Canada-1-scaled.jpg',
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
-            cardType: "destination"
-        },
-        {
-            title: "Study in UK",
-            img: 'Study-in-UK-1.jpg',
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
-            cardType: "destination"
-        },
-        {
-            title: "Study in USA",
-            img: 'Study-in-USA-1.jpg',
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
-            cardType: "destination"
-        },
-        {
-            title: "Study in Europe",
-            img: 'Study-in-Europe-1.jpg',
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!",
-            cardType: "destination"
-        }
-    ]
+    const destinations = useLoaderData() as Destination[];
+    const outlet = useOutlet();
+    console.log(destinations);
     return (
-        <div>
-            <div className="bg-primary text-center">
-                <h1 className="text-5xl font-bold text-white p-20">Study Destination</h1>
-            </div>
-            <div className="bg-slate-100 py-16 px-10">
-                <div className="container mx-auto  grid grid-cols1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-x-5 gap-y-10">
-                    {
-                        destinationCards.map((card, index) => (
-                            <SliderCard key={index}
-                                title={card.title}
-                                img={card.img}
-                                desc={card.desc}
-                                cardType={card.cardType}
-                            />
-                        ))
-                    }
-                </div>
-            </div>
-        </div>
+        <>
+            {
+                !outlet ? <div>
+                    < div className="bg-primary text-center" >
+                        <h1 className="text-5xl font-bold text-white p-20">Study Destination</h1>
+                    </div >
+                    <div className="bg-slate-100 py-16 px-10">
+                        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-x-5 gap-y-10">
+                            {
+                                destinations.map((destination, index) => (
+                                    <SliderCard key={index}
+                                        destination={destination}
+                                    />
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div > : <Outlet />
+            }
+        </>
     )
 }
 

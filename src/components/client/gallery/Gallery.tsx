@@ -2,7 +2,6 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { eventImages, partnerImages } from "../../../lib/data"
 import ImageCarousel from "../../ui/ImageCarousel"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useDocumentTitle from "../../../lib/Helpers";
 
 // type Props = {}
 
@@ -43,8 +42,6 @@ const Gallery = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />
     }
-
-    useDocumentTitle('Gallery');
 
     return (
         <div>

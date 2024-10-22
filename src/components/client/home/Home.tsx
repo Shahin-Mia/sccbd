@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faAngleLeft, faAngleRight, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../ui/Card';
 import Carousel from '../../ui/Carousel';
@@ -10,6 +10,8 @@ import ImageCarousel from '../../ui/ImageCarousel';
 import { Link } from 'react-router-dom';
 import HelpForm from '../../ui/HelpForm';
 import Slider from 'react-slick';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 type Props = {}
 
@@ -38,6 +40,17 @@ function PrevArrow(props: any) {
 }
 
 function Home({ }: Props): React.JSX.Element {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1200, // How long the animation lasts
+            offset: 100, // Easing function for the animation
+            once: true,    // Whether the animation should happen only once or every time you scroll
+            mirror: false,
+        })
+        window.addEventListener('load', AOS.refresh);
+        return () => window.removeEventListener('load', AOS.refresh);
+    }, [])
 
     const settings = {
         speed: 2000,
@@ -157,13 +170,13 @@ function Home({ }: Props): React.JSX.Element {
                 </Slider>
             </div>
             <section className="container mx-auto overflow-hidden mt-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center lg:ml-16">
-                    <div>
+                <div className="grid grid-cols-1 lg:grid-cols-6 justify-items-center lg:ml-16">
+                    <div className='lg:col-span-4' data-aos="fade-right">
                         <h3 className='my-5 font-bold'>SCC can help you</h3>
                         <HelpForm />
                     </div>
-                    <div className='hidden lg:block'>
-                        <img src="/images/help-banner.jpg" className='w-4/5 h-full' alt="australia-picture" />
+                    <div className='hidden lg:block lg:col-span-2' data-aos="flip-right">
+                        <img src="/images/side_pic.jpg" className='w-full h-4/5' alt="student-picture" />
                     </div>
                 </div>
             </section>
@@ -184,7 +197,7 @@ function Home({ }: Props): React.JSX.Element {
                         <h3 className='text-xl md:text-2xl mb-2'>SCC provides quality counseling to our students</h3>
                     </div>
                     <div className='flex items-center justify-between sm:mx-14 flex-wrap sm:flex-nowrap'>
-                        <div>
+                        <div data-aos="fade-up">
                             <Disclosure as="div" className="px-6 mb-1">
                                 <DisclosureButton className="group flex w-full items-center">
                                     <ChevronDownIcon className="size-5 mr-2 fill-white/60 group-data-[hover]:fill-white/50 group-data-[open]:rotate-180" />
@@ -248,7 +261,7 @@ function Home({ }: Props): React.JSX.Element {
                                 </DisclosurePanel>
                             </Disclosure>
                         </div>
-                        <div className='relative'>
+                        <div className='relative' data-aos="fade-down">
                             <div className='w-80'>
                                 <img src="/images/SCC-Study-destination-scaled.jpg" alt="" />
                             </div>
@@ -256,7 +269,7 @@ function Home({ }: Props): React.JSX.Element {
                         </div>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 justify-items-center'>
-                        <div className="max-w-96 bg-white p-3 mx-2">
+                        <div className="max-w-96 bg-white p-3 mx-2" data-aos="fade-right">
                             <div className='max-w-16'>
                                 <img src="/images/Academic-counselling.png" alt="" className="rounded-lg" />
                             </div>
@@ -265,7 +278,7 @@ function Home({ }: Props): React.JSX.Element {
                                 <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!</p>
                             </div>
                         </div>
-                        <div className="max-w-96 bg-white p-3 mx-2">
+                        <div className="max-w-96 bg-white p-3 mx-2" data-aos="fade-down">
                             <div className='max-w-16'>
                                 <img src="/images/Securing-admission.png" alt="" className="rounded-lg" />
                             </div>
@@ -276,7 +289,7 @@ function Home({ }: Props): React.JSX.Element {
                                 <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas nihil molestiae facilis explicabo accusamus? Aspernatur deleniti blanditiis, molestiae totam praesentium ipsum iste numquam tenetur cupiditate, consequuntur repellendus deserunt tempore!</p>
                             </div>
                         </div>
-                        <div className="max-w-96 bg-white p-3 mx-2">
+                        <div className="max-w-96 bg-white p-3 mx-2" data-aos="fade-left">
                             <div className='max-w-16'>
                                 <img src="/images/Visa-guidance.png" alt="visa-guidance" className="rounded-lg" />
                             </div>
@@ -333,10 +346,12 @@ function Home({ }: Props): React.JSX.Element {
                     <Card
                         title="Our mission"
                         description="Our primary objective is to enable students from across the globe to access top-notch educational opportunities and services. Simultaneously, we aim to offer our partners and clients a transparent, dependable, and…"
+                        aos_style="fade-right"
                     />
                     <Card
                         title="Our vision"
                         description="As the foremost agency for recruiting international students in the Asia Pacific region, we are renowned for our dedication to a student-focused approach, unwavering integrity, and outstanding service delivery…"
+                        aos_style="fade-left"
                     />
                 </div>
             </section>

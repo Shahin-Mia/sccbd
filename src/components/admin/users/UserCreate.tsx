@@ -56,8 +56,10 @@ function UserCreate(): React.JSX.Element {
         formData.append("profile_image", data.profile_image);
         formData.append("password", data.password);
 
-        const msg = await User.createUser(formData);
-        return msg;
+        const resdata = await User.createUser(formData);
+        if (resdata.hasOwnProperty("status") && resdata.status === "success") {
+            return resdata.message
+        }
     }
 
     const handleSubmit = (values: any, { setSubmitting, resetForm }: any) => {
@@ -92,6 +94,7 @@ function UserCreate(): React.JSX.Element {
                         <div className="card-body">
                             <div className="card-title justify-center mb-10">
                                 <h2>Create User</h2>
+                                <p>{message}</p>
                             </div>
                             <div className='grid grid-cols-1 md:grid-cols-2 mb-2'>
                                 <label htmlFor="user_name" className='font-semibold'>Name</label>

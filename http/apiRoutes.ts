@@ -1,7 +1,10 @@
 export const API = {
-    CREATE_USER_URL: "/api/create-users",
-    LOGIN_URL: "/api/login",
-    ACTIVATION_URL: "/api/account-activation",
-    RESET_PASSWORD_URL: "/api/reset-password",
-    RESET_MAIL_URL: "/api/reset"
+    CREATE_USER_URL: "/create-users",
+    LOGIN_URL: "/login",
+    ACTIVATION_URL: "/account-activation",
+    RESET_PASSWORD_URL: "/reset-password",
+    RESET_MAIL_URL: "/reset",
+    GET_USER_URL: "/users",
+
+    DESTINATION_URL: "/destinations"
 };

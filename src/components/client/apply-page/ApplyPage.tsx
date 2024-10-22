@@ -1,10 +1,9 @@
-import useDocumentTitle from "../../../lib/Helpers";
+
 import ApplicationForm from "../../ui/ApplicationForm"
 
 // type Props = {}
 
 const ApplyPage = () => {
-    useDocumentTitle('Apply');
     return (
         <div className="bg-slate-100 py-10">
             <div className="bg-white w-4/5 md:container mx-auto py-16 rounded-3xl">

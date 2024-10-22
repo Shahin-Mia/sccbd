@@ -1,60 +1,45 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SliderCard from "./SliderCard";
-import Slider from "react-slick";
-import { destinationCards } from "../../lib/data";
+import { Destination } from "../../../http/destinaitons";
+import { useEffect, useState } from "react";
 
+interface Destination {
+  id: number,
+  destination_name: String,
+  destination_thumbnail: String,
+  destination_images: String,
+  description: String,
+  published: number,
+  created_by: number,
+  created_at: String,
+  updated_at: String
+}
 
 const Carousel = () => {
-
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+  const [destinations, setDestination] = useState<Destination[]>([]);
+  const fetchData = async () => {
+    const data = await Destination.getAll();
+    if (data) {
+      setDestination(data);
+    }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
+
+    <div className="px-10">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-x-5 gap-y-10">
         {
-          destinationCards.map((card, index) => (
+          destinations.map((destination, index) => (
             <SliderCard key={index}
-              title={card.title}
-              img={card.img}
-              desc={card.desc}
-              cardType={card.cardType}
+              destination={destination}
             />
           ))
         }
-      </Slider>
+      </div>
     </div>
   );
 }

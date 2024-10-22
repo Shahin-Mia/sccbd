@@ -46,7 +46,7 @@ const RegisterForm = () => {
         }, 400);
     }
     return (
-        <div className="hero bg-primary bg-opacity-10 py-8">
+        <div className="hero bg-primary bg-opacity-10 py-8 overflow-hidden">
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left">
                     <h1 className="text-4xl font-bold">Create your SCC account</h1>
@@ -55,7 +55,7 @@ const RegisterForm = () => {
                     </p>
                     <p className="text-error">{message}</p>
                 </div>
-                <div className="w-[28rem] md:w-[30rem] lg:w-[40rem]">
+                <div className="w-full sm:w-[30rem] lg:w-[40rem]">
                     <Formik
                         initialValues={
                             {

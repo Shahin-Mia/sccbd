@@ -34,78 +34,112 @@ import ActivationPage from "../client/activation/ActivationPage";
 import ProtectedRegister from "../client/register/ProtectedRegister";
 import ProtectedResetForm from "../client/resetform/ProtectedResetForm";
 import EmailForm from "../client/forgot/EmailForm";
+import DestinationDetails from "../client/study-destination/DestinationDetails";
+import { destinaionLoader, getDestinationById } from "../../lib/Helpers";
+import ErrorPage from "../client/ErrorPage";
+import Dashboard from "../admin/layout/Dashboard";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <Home />
+                element: <Home />,
+                errorElement: <ErrorPage />
             },
             {
                 path: 'about',
-                element: <About />
+                element: <About />,
+                errorElement: <ErrorPage />
             },
             {
                 path: 'services',
-                element: <Services />
+                element: <Services />,
+                errorElement: <ErrorPage />
             },
             {
                 path: 'study-destination',
-                element: <StudyDestination />
+                element: <StudyDestination />,
+                errorElement: <ErrorPage />,
+                loader: destinaionLoader,
+                children: [
+                    {
+                        path: ":destination/:id",
+                        element: <DestinationDetails />,
+                        errorElement: <ErrorPage />,
+                        loader: getDestinationById
+                    }
+                ]
             },
             {
                 path: 'contact',
-                element: <Contact />
+                element: <Contact />,
+                errorElement: <ErrorPage />
             },
             {
                 path: 'blog',
-                element: <Blog />
+                element: <Blog />,
+                errorElement: <ErrorPage />
             },
             {
                 path: 'gallery',
-                element: <Gallery />
+                element: <Gallery />,
+                errorElement: <ErrorPage />
             },
             {
                 path: 'application-page',
-                element: <ApplyPage />
+                element: <ApplyPage />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "login",
-                element: <ProtectedLogin />
+                element: <ProtectedLogin />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "register",
-                element: <ProtectedRegister />
+                element: <ProtectedRegister />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "greeting",
-                element: <ProtectedGreeting />
+                element: <ProtectedGreeting />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "our-team",
-                element: <Team />
+                element: <Team />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "account-activation",
-                element: <ActivationPage />
+                element: <ActivationPage />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "forgot-password",
-                element: <EmailForm />
+                element: <EmailForm />,
+                errorElement: <ErrorPage />
             },
             {
                 path: "reset-password",
-                element: <ProtectedResetForm />
-            }
+                element: <ProtectedResetForm />,
+                errorElement: <ErrorPage />
+            },
+
         ],
     },
     {
         path: "/dashboard",
         element: <ProtectedRoute />,
         children: [
+            {
+                path: "/dashboard",
+                element: <Dashboard />
+            },
             {
                 path: "destination/add",
                 element: <DestinationForm />

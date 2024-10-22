@@ -1,5 +1,13 @@
 import http from "../config/server"
+import { decryptData } from "../src/lib/cryptoUtils";
 import { API } from "./apiRoutes"
+
+let apiKey = ""
+
+if (sessionStorage.getItem("encrypted_data")) {
+    const { api_key } = decryptData(sessionStorage.getItem("encrypted_data"));
+    apiKey = api_key;
+}
 
 export const User = {
 
@@ -60,6 +68,23 @@ export const User = {
             return "There is something wrong try again leter!";
         }
     },
+    getUsers: async () => {
+        try {
+            const response = await http.get(API.GET_USER_URL, { headers: { "x-api-key": apiKey } });
+            return response.data;
+        } catch (e) {
+            console.log(e)
+            return "There is something wrong try again leter!";
+        }
+    },
 
-
+    delete: async (id: number) => {
+        try {
+            const response = await http.delete(API.GET_USER_URL + `/${id}`, { headers: { "x-api-key": apiKey } });
+            return response.data;
+        } catch (e) {
+            console.log(e)
+            return "There is something wrong try again leter!";
+        }
+    },
 }

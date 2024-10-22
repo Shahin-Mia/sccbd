@@ -22,7 +22,7 @@ const Login = () => {
 
 
     return (
-        <div className="hero bg-primary bg-opacity-10 py-8">
+        <div className="hero bg-primary bg-opacity-10 py-8 overflow-hidden">
             <div className="hero-content">
                 <Formik
                     initialValues={
@@ -35,7 +35,7 @@ const Login = () => {
                 >{({ isSubmitting }) => (
                     <Form>
                         <div className="card bg-slate-100 w-full max-w-lg shadow-2xl">
-                            <div className="card-body w-96 md:w-[30rem]">
+                            <div className="card-body w-full sm:w-[30rem]">
                                 <div className="card-title flex-col mb-10">
                                     <h2>Sign in</h2>
                                     <p className="text-sm font-normal text-slate-800">Welcome Back! Please Enter your details</p>
