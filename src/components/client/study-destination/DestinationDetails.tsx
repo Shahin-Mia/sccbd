@@ -17,7 +17,6 @@ function DestinationDetails() {
     const destination = useLoaderData() as Destination;
     const images = destination.destination_images.split(",");
     const [selectedImage, setSelectedImage] = useState(images[0]);
-    console.log(destination);
     return (
         <div>
             <div
@@ -36,31 +35,34 @@ function DestinationDetails() {
             <div className="container mx-auto flex flex-col-reverse md:flex-row justify-center items-center mt-10">
                 <div
                     dangerouslySetInnerHTML={{ __html: destination.description }}
-                    className="flex-1 mr-10 mt-10"
+                    className="flex-1 m-10 sm:mr-10 sm:mt-10"
                 />
                 <div>
-                    {/* Main Image */}
-                    <div className="main-image">
-                        <img src={`/images/${selectedImage}`} alt="Selected product" className="w-72 md:w-96 h-64" />
-                    </div>
+                    <div className="flex flex-col items-center justify-center lg:sticky lg:top-32">
+                        {/* Main Image */}
+                        <div>
+                            <img src={`/images/${selectedImage}`} alt="selected product" className="w-72 md:w-96 h-64" />
+                        </div>
 
-                    {/* Thumbnail Images */}
-                    <div className="flex mt-4">
-                        {images.map((image, index) => (
-                            <img
-                                key={index}
-                                src={`/images/${image}`}
-                                alt={`Product ${index}`}
-                                onClick={() => setSelectedImage(image)}
-                                style={{
-                                    width: '100px',
-                                    height: '100px',
-                                    cursor: 'pointer',
-                                    border: selectedImage === image ? '2px solid blue' : '1px solid gray',
-                                    marginRight: '5px',
-                                }}
-                            />
-                        ))}
+                        {/* Thumbnail Images */}
+                        <div className="flex mt-4">
+                            {images.map((image, index) => (
+                                <img
+                                    key={index}
+                                    src={`/images/${image}`}
+                                    alt={`Product ${index}`}
+                                    onClick={() => setSelectedImage(image)}
+                                    style={{
+                                        width: '80px',
+                                        height: '80px',
+                                        cursor: 'pointer',
+                                        border: selectedImage === image ? '2px solid blue' : '1px solid gray',
+                                        borderRadius: "2px",
+                                        marginRight: '5px',
+                                    }}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

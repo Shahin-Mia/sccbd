@@ -1,6 +1,6 @@
 import SliderCard from "../../ui/SliderCard";
 import { Destination } from "../../../../http/destinaitons";
-import { Outlet, useLoaderData, useOutlet } from "react-router-dom";
+import { Outlet, useOutlet, useOutletContext } from "react-router-dom";
 
 // type Props = {}
 interface Destination {
@@ -16,7 +16,7 @@ interface Destination {
 }
 
 const StudyDestination = () => {
-    const destinations = useLoaderData() as Destination[];
+    const destinations = useOutletContext() as Destination[];
     const outlet = useOutlet();
     console.log(destinations);
     return (

@@ -43,6 +43,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout />,
+        loader: destinaionLoader,
         errorElement: <ErrorPage />,
         children: [
             {
@@ -64,7 +65,6 @@ export const router = createBrowserRouter([
                 path: 'study-destination',
                 element: <StudyDestination />,
                 errorElement: <ErrorPage />,
-                loader: destinaionLoader,
                 children: [
                     {
                         path: ":destination/:id",

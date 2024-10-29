@@ -13,7 +13,8 @@ function classNames(...classes: String[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function Navbar({ destinations }: any) {
+  const subDestinaionMenu = destinations.map((dest: any) => ({ id: dest.id, dest_name: dest.destination_name }));
   const location = useLocation();
 
   const userContext = useContext(UserContext);
@@ -23,7 +24,7 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
-    { name: 'Study Destination', href: '/study-destination' },
+    { name: 'Study Destination', href: '/study-destination', subMenu: subDestinaionMenu },
     { name: 'Contact', href: '/contact' },
     // { name: 'Blog', href: '/blog' },
     { name: 'Gallery', href: '/gallery' },
@@ -56,16 +57,33 @@ export default function Navbar() {
               <div className="hidden flex-1 lg:block">
                 <div className="flex items-center space-x-4 justify-center">
                   {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className={classNames(
+                    item.subMenu ?
+                      <div key={item.name} className={classNames(
                         location.pathname === item.href ? 'text-primary' : 'text-slate-800 hover:text-primary',
-                        'rounded-md px-2 py-2 text-base font-medium xl:text-lg',
-                      )}
-                    >
-                      {item.name}
-                    </Link>
+                        'rounded-md px-2 py-2 text-base font-medium xl:text-lg dropdown dropdown-hover',
+                      )}>
+                        <div tabIndex={0}>
+                          <Link to={item.href}>{item.name}</Link>
+                        </div>
+                        <ul tabIndex={0} className="dropdown-content menu bg-slate-50 rounded-box z-[1] w-52">
+                          {
+                            item.subMenu.map((sub: any) => (
+                              <li key={sub.id}><Link to={`${item.href}/${sub.dest_name}/${sub.id}`}>Study in {sub.dest_name}</Link></li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                      : <Link
+                        key={item.name}
+                        to={item.href}
+                        className={classNames(
+                          location.pathname === item.href ? 'text-primary' : 'text-slate-800 hover:text-primary',
+                          'rounded-md px-2 py-2 text-base font-medium xl:text-lg',
+                        )}
+                      >
+                        {item.name}
+                      </Link>
+
                   ))}
                 </div>
               </div>
@@ -103,9 +121,9 @@ export default function Navbar() {
                       </a>
                     </MenuItem>
                     <MenuItem>
-                      <button onClick={logout} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      <a onClick={logout} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                         Sign out
-                      </button>
+                      </a>
                     </MenuItem>
                   </MenuItems>
                 </Menu>

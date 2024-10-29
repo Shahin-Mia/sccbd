@@ -9,9 +9,10 @@ const ErrorPage = () => {
             <h1>Oops! Something went wrong.</h1>
             <p className='text-center'>Sorry, an unexpected error has occurred.</p>
             {error.statusText || error.message ? (
-                <p className='text-center'>
-                    <i>{error.statusText || error.message}</i>
-                </p>
+                <div className='text-center'>
+                    <h2 className='text-6xl'>500</h2>
+                    <span>Internal Server Error</span>
+                </div>
             ) : null}
             <a href='/' className='btn btn-neural'>Go to Homepage</a>
         </div>

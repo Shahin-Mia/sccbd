@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { faAngleLeft, faAngleRight, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../ui/Card';
 import Carousel from '../../ui/Carousel';
@@ -7,13 +7,15 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import MessageCarousel from '../../ui/MessageCarousel';
 import ImageCarousel from '../../ui/ImageCarousel';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import HelpForm from '../../ui/HelpForm';
 import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-type Props = {}
+type Props = any;
 
 function NextArrow(props: any) {
     const { className, onClick } = props;
@@ -40,17 +42,18 @@ function PrevArrow(props: any) {
 }
 
 function Home({ }: Props): React.JSX.Element {
-
+    const destinations = useOutletContext();
+    const [slider, setSlider] = useState(0);
     useEffect(() => {
         AOS.init({
             duration: 1200, // How long the animation lasts
-            offset: 100, // Easing function for the animation
-            once: true,    // Whether the animation should happen only once or every time you scroll
+            offset: 200, // Easing function for the animation
+            once: false,    // Whether the animation should happen only once or every time you scroll
             mirror: false,
         })
         window.addEventListener('load', AOS.refresh);
         return () => window.removeEventListener('load', AOS.refresh);
-    }, [])
+    }, []);
 
     const settings = {
         speed: 2000,
@@ -117,66 +120,52 @@ function Home({ }: Props): React.JSX.Element {
         slidesToScroll: 1,
         waitForAnimate: false,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         cssEase: "linear",
         adaptiveHeight: true,
         nextArrow: <NextArrow />,  // Use custom next arrow
         prevArrow: <PrevArrow />,
+        afterChange: (current: any) => {
+            setSlider(current);
+            AOS.refreshHard();
+        },
     };
+
+    const sliderImages = ["/slider-1.webp", "/slider-2.webp", "/slider-3.webp"];
 
     return (
         <main>
             <div className="slider-container">
                 <Slider {...fadeSettings}>
-                    <div className='relative'>
-                        <img src={baseUrl + "/slider-1.webp"} className='w-full h-[70vh] lg:h-auto' />
-                        <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
-                            <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
-                                <div className='px-5 md:px-0'>
-                                    <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
-                                    <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
-                                    <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
-                                    <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
+                    {
+                        sliderImages.map((img, index) => (
+                            <div className='relative' key={index + slider}>
+                                <img src={baseUrl + img} className='w-full h-[70vh] lg:h-auto' />
+                                <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
+                                    <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
+                                        <div className='px-5 md:px-0' data-aos="fade-up">
+                                            <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
+                                            <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
+                                            <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
+                                            <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className='relative'>
-                        <img src={baseUrl + "/slider-2.webp"} className='w-full h-[70vh] lg:h-auto' />
-                        <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
-                            <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
-                                <div className='px-5 md:px-0'>
-                                    <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
-                                    <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
-                                    <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
-                                    <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='relative'>
-                        <img src={baseUrl + "/slider-3.webp"} className='w-full h-[70vh] lg:h-auto' />
-                        <div className='absolute top-0 left-0 bottom-0 bg-slate-900 bg-opacity-40 w-full overflow-visible'>
-                            <div className='container overflow-hidden mx-auto grid grid-cols-1 md:grid-cols-2 content-center h-full'>
-                                <div className='px-5 md:px-0'>
-                                    <h2 className='text-slate-200 text-4xl lg:text-6xl font-bold mb-10'>Explore overseas study options...</h2>
-                                    <h3 className='text-lg md:text-xl text-slate-200 font-semibold mb-5'><FontAwesomeIcon icon={faSquareCheck} className='text-slate-200' /> Countless option to make your future brighter</h3>
-                                    <p className='text-base text-slate-200 md:text-lg mb-8'>Student Career Consultancy helps you to choose dream study destination by providing premium education consultancy services.</p>
-                                    <Link to='/application-page' className='btn bg-slate-200 text-primary text-lg md:text-xl'>Sign up</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </Slider>
             </div>
-            <section className="container mx-auto overflow-hidden mt-10">
-                <div className="grid grid-cols-1 lg:grid-cols-6 justify-items-center lg:ml-16">
-                    <div className='lg:col-span-4' data-aos="fade-right">
-                        <h3 className='my-5 font-bold'>SCC can help you</h3>
-                        <HelpForm />
-                    </div>
-                    <div className='hidden lg:block lg:col-span-2' data-aos="flip-right">
-                        <img src="/images/side_pic.jpg" className='w-full h-4/5' alt="student-picture" />
+            <section className="bg-primary bg-opacity-20">
+                <div className='container mx-auto overflow-hidden mt-10'>
+                    <div className="card card-body grid grid-cols-1 lg:grid-cols-6 justify-items-center">
+                        <div className='mx-4 lg:col-span-4' data-aos="fade-right">
+                            <h3 className='my-5 font-bold'>SCC can help you</h3>
+                            <HelpForm destinations={destinations} />
+                        </div>
+                        <div className='hidden lg:block lg:col-span-2' data-aos="flip-right">
+                            <img src="/images/side_pic.jpg" className='w-full h-full' alt="student-picture" />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -186,7 +175,7 @@ function Home({ }: Props): React.JSX.Element {
                         <h3 className='text-3xl md:text-4xl font-bold text-white text-center'>Our Destination</h3>
                     </div>
                     <div className='mt-10'>
-                        <Carousel />
+                        <Carousel destinations={destinations} />
                     </div>
                 </div>
             </section>

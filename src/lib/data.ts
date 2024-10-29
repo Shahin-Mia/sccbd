@@ -188,7 +188,7 @@ export const members = [
     {
         name: "Kanij Fatima Mitu",
         position: "Chief Executive officer",
-        image: "/kanij_fatima_mitu.png",
+        image: "kanij_fatima_mitu.png",
         email: "ceo@sccbd.net",
         contractNo: "+8801703523861",
         employeeID: "2023001",
@@ -196,7 +196,7 @@ export const members = [
     {
         name: "Md.Deen Islam",
         position: "Student Counsellor",
-        image: "/deen_islam.jpg",
+        image: "deen_islam.jpg",
         email: "eenislam@sccbd.net",
         contractNo: "+8801581498244",
         employeeID: "2023011",
@@ -204,7 +204,7 @@ export const members = [
     {
         name: "Somaia Hasan Ruley",
         position: "Student Counsellor",
-        image: "/somaia_hasan_ruley.jpg",
+        image: "somaia_hasan_ruley.jpg",
         email: "somaia@sccbd.net",
         contractNo: "+8801703560389",
         employeeID: "202307",
@@ -213,7 +213,7 @@ export const members = [
     {
         name: "Md. Razib Hossain",
         position: "Senior Student Counsellor",
-        image: "/razib_hossain.jpg",
+        image: "razib_hossain.jpg",
         email: "razib@sccbd.net",
         contractNo: "+880 1703-514789",
         employeeID: "2023012",
@@ -221,7 +221,7 @@ export const members = [
     {
         name: "Zobayer Islam",
         position: "Senior Student Counsellor",
-        image: "/zobayer_islam.jpg",
+        image: "zobayer_islam.jpg",
         email: "zobayerislam@sccbd.net",
         contractNo: "+8801703539964",
         employeeID: "2023013",
@@ -229,7 +229,7 @@ export const members = [
     {
         name: "Md. Rashidul Islam",
         position: "English Language Instructor",
-        image: "/rashidul_islam.jpg",
+        image: "rashidul_islam.jpg",
         email: "instructor.rashidul.slc@sccbd.net",
     }
 ]

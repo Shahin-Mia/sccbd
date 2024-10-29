@@ -29,7 +29,13 @@ interface Destination {
 
 export async function destinaionLoader(): Promise<Destination[]> {
     const data = await Destination.getAll();
-    return data;
+    const publishData: Destination[] = [];
+    data.forEach((item: Destination) => {
+        if (item.published) {
+            publishData.push(item)
+        }
+    });
+    return publishData;
 }
 
 export async function getDestinationById({ params }: any): Promise<Destination> {

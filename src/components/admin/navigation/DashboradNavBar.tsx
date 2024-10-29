@@ -23,16 +23,16 @@ function DashboradNavBar(): React.JSX.Element {
                         </div>
                         <div className="mx-2 flex-1 px-2 justify-center lg:justify-start">
                             <Link to="/">
-                                <img src="/images/logo.png" className="max-w-52 sm:max-w-60 md:max-w-64" alt="" />
+                                <img src="/images/logo.png" className="max-w-40 sm:max-w-60 md:max-w-64" alt="" />
                             </Link>
                         </div>
                         <div className="mx-5">
-                            <Menu as="div" className="relative ml-3">
+                            <Menu as="div" className="relative sm:ml-3">
                                 <div>
                                     <MenuButton className="relative flex items-center rounded-full text-sm">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <span className="mx-1">{user?.username}</span>
+                                        <span className="mx-1 hidden sm:inline-block">{user?.username}</span>
                                         <img
                                             alt=""
                                             src={`/images/${user?.profile_image}`}
@@ -67,9 +67,9 @@ function DashboradNavBar(): React.JSX.Element {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu bg-base-200 min-h-full w-64 p-4">
+                    <ul className="menu bg-slate-200 min-h-full w-64 p-4">
                         {
-                            sideNav.map((nav) => {
+                            user?.role != "student" ? sideNav.map((nav) => {
                                 if (nav.hasOwnProperty("main") && nav.hasOwnProperty("sub")) {
                                     return <li key={nav.id}>
                                         <details>
@@ -86,7 +86,8 @@ function DashboradNavBar(): React.JSX.Element {
                                 } else {
                                     return <li key={nav.id}><Link to={`/dashboard/${nav.href}`}>{nav.name}</Link></li>
                                 }
-                            })
+                            }) : <li><Link to="#">Your profile</Link></li>
+
                         }
                     </ul>
                 </div>
